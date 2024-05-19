@@ -3,8 +3,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {CommonActions} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Text, BottomNavigation} from 'react-native-paper';
-import MainScreen from '../screens/main/Main';
 import RankingScreen from '../screens/ranking/Ranking';
+import MainScreen from '../screens/main/main';
 
 const Tab = createBottomTabNavigator();
 
