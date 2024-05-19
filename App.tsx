@@ -11,6 +11,7 @@ import useUserStore from './src/store/user';
 import customThemeLight from './src/assets/light.json';
 import customThemeDark from './src/assets/dark.json';
 import {Platform} from 'react-native';
+import MainStack from './src/navigation/MainStack';
 
 function App(): React.JSX.Element {
   const colorScheme = useColorScheme();
@@ -56,7 +57,7 @@ function App(): React.JSX.Element {
 
   return (
     <PaperProvider theme={theme}>
-      {name === null ? <RootNavigation /> : <RootNavigation />}
+      {name ? <MainStack /> : <MainStack />}
     </PaperProvider>
   );
 }
