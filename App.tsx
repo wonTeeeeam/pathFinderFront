@@ -1,20 +1,22 @@
 import React from 'react';
-import {useColorScheme} from 'react-native';
-import RootNavigation from './src/navigation/RootNavigation';
+import {Platform, useColorScheme} from 'react-native';
 import {
-  configureFonts,
-  MD3LightTheme,
   MD3DarkTheme,
+  MD3LightTheme,
   PaperProvider,
+  configureFonts,
 } from 'react-native-paper';
-import useUserStore from './src/store/user';
-import customThemeLight from './src/assets/light.json';
+
 import customThemeDark from './src/assets/dark.json';
-import {Platform} from 'react-native';
+import customThemeLight from './src/assets/light.json';
+import LoginStack from './src/navigation/LoginStack';
+import useUserStore from './src/store/user';
 import MainStack from './src/navigation/MainStack';
 
 function App(): React.JSX.Element {
   const colorScheme = useColorScheme();
+  const userInfo = useUserStore(state => state.userInfo);
+
   const theme =
     colorScheme !== 'dark'
       ? {
@@ -53,11 +55,10 @@ function App(): React.JSX.Element {
             },
           }),
         };
-  const {name, age, getUserInfo} = useUserStore(state => state);
 
   return (
     <PaperProvider theme={theme}>
-      {name ? <MainStack /> : <MainStack />}
+      {userInfo ? <MainStack /> : <LoginStack />}
     </PaperProvider>
   );
 }
