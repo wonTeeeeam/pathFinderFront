@@ -12,8 +12,12 @@ const styles = StyleSheet.create({
 });
 
 function RankingScreen() {
-  const [numberOfItemsPerPageList] = useState([2, 3, 4]);
-
+  const [ownUser, setOwnUser] = useState({
+    key: Math.random(),
+    name: '반원재',
+    calories: 356,
+    fat: 16,
+  });
   const [items] = useState([
     {
       key: 1,
@@ -47,6 +51,12 @@ function RankingScreen() {
     {},
     {},
     {},
+    {
+      key: 123,
+      name: '반원재',
+      calories: 356,
+      fat: 16,
+    },
   ]);
 
   return (
@@ -76,45 +86,98 @@ function RankingScreen() {
         </DataTable.Header>
 
         {items.map((item, i) => (
-          <DataTable.Row key={i}>
-            <DataTable.Cell>
-              <Text
-                style={{
-                  color:
-                    i + 1 === 1
-                      ? '#ffd700'
-                      : i + 1 === 2
-                      ? '#c0c0c0'
-                      : i + 1 === 3
-                      ? '#bf9000'
-                      : null,
-                }}>
-                {i + 1}
-              </Text>
-            </DataTable.Cell>
-            <DataTable.Cell>{item.name}</DataTable.Cell>
-            <DataTable.Cell numeric>{item.fat}</DataTable.Cell>
-          </DataTable.Row>
+          <>
+            {item.name === ownUser.name && i === 10 ? (
+              <>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      color: '#000000',
+                      margin: 'auto 0',
+                    }}>
+                    &#8942;
+                  </Text>
+                </View>
+                <DataTable.Row key={i}>
+                  <DataTable.Cell>
+                    <Text>{i + 1}</Text>
+                  </DataTable.Cell>
+                  <DataTable.Cell>{item.name}</DataTable.Cell>
+                  <DataTable.Cell numeric>{item.fat}</DataTable.Cell>
+                </DataTable.Row>
+              </>
+            ) : (
+              <DataTable.Row key={i}>
+                <DataTable.Cell>
+                  <Text
+                    style={{
+                      color:
+                        i + 1 === 1
+                          ? '#ffd700'
+                          : i + 1 === 2
+                          ? '#c0c0c0'
+                          : i + 1 === 3
+                          ? '#bf9000'
+                          : null,
+                    }}>
+                    {i + 1}
+                  </Text>
+                </DataTable.Cell>
+                <DataTable.Cell>{item.name}</DataTable.Cell>
+                <DataTable.Cell numeric>{item.fat}</DataTable.Cell>
+              </DataTable.Row>
+            )}
+            {/* <DataTable.Row key={i}>
+              <DataTable.Cell>
+                <Text
+                  style={{
+                    color:
+                      i + 1 === 1
+                        ? '#ffd700'
+                        : i + 1 === 2
+                        ? '#c0c0c0'
+                        : i + 1 === 3
+                        ? '#bf9000'
+                        : null,
+                  }}>
+                  {i + 1}
+                </Text>
+              </DataTable.Cell>
+              <DataTable.Cell>{item.name}</DataTable.Cell>
+              <DataTable.Cell numeric>{item.fat}</DataTable.Cell>
+            </DataTable.Row>
+            {item.name === ownUser.name && i === 10 && (
+              <>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      color: '#000000',
+                      margin: 'auto 0',
+                    }}>
+                    &#8942;
+                  </Text>
+                </View>
+                <DataTable.Row key={i}>
+                  <DataTable.Cell>
+                    <Text>{i + 1}</Text>
+                  </DataTable.Cell>
+                  <DataTable.Cell>{item.name}</DataTable.Cell>
+                  <DataTable.Cell numeric>{item.fat}</DataTable.Cell>
+                </DataTable.Row>
+              </>
+            )} */}
+          </>
         ))}
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text
-            style={{
-              color: '#000000',
-              margin: 'auto 0',
-            }}>
-            &#8942;
-          </Text>
-          <DataTable.Row>
-            <DataTable.Cell>123</DataTable.Cell>
-            <DataTable.Cell>반원재</DataTable.Cell>
-            <DataTable.Cell>1</DataTable.Cell>
-          </DataTable.Row>
-        </View>
       </DataTable>
     </ScrollView>
   );
