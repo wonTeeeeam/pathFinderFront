@@ -1,22 +1,45 @@
 import * as React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {CommonActions, NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Text, BottomNavigation} from 'react-native-paper';
+import {BottomNavigation} from 'react-native-paper';
 import RankingScreen from '../screens/ranking/Ranking';
 import MainScreen from '../screens/main/Main';
+// import {hs} from '../utils/scale';
 
-const Tab = createBottomTabNavigator();
+// const Tab = createBottomTabNavigator();
+const MusicRoute = MainScreen;
+
+const AlbumsRoute = RankingScreen;
 
 function MainStack(): React.JSX.Element {
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    {key: 'music', title: '홈', icon: Icon.getImageSource('home', 20)},
+    {key: 'albums', title: '랭킹', icon: 'crown'},
+  ]);
+
+  const renderScene = BottomNavigation.SceneMap({
+    music: MusicRoute,
+    albums: AlbumsRoute,
+  });
+
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <BottomNavigation
+        navigationState={{index, routes}}
+        onIndexChange={setIndex}
+        renderScene={renderScene}
+      />
+      {/* <Tab.Navigator
         screenOptions={{
           headerShown: false,
         }}
         tabBar={({navigation, state, descriptors, insets}) => (
           <BottomNavigation.Bar
+            style={{
+              maxHeight: hs(63),
+            }}
             compact={true}
             navigationState={state}
             safeAreaInsets={insets}
@@ -77,7 +100,7 @@ function MainStack(): React.JSX.Element {
             },
           }}
         />
-      </Tab.Navigator>
+      </Tab.Navigator> */}
     </NavigationContainer>
   );
 }

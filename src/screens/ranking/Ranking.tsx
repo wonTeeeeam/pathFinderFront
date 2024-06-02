@@ -44,13 +44,41 @@ function RankingScreen() {
       fat: 3.7,
     },
     {
+      key: 5,
       name: 'Gingerbread',
+      calories: 305,
+      fat: 3.7,
     },
-    {},
-    {},
-    {},
-    {},
-    {},
+    {
+      key: 6,
+      name: 'Gingerbread',
+      calories: 305,
+      fat: 3.7,
+    },
+    {
+      key: 7,
+      name: 'Gingerbread',
+      calories: 305,
+      fat: 3.7,
+    },
+    {
+      key: 8,
+      name: 'Gingerbread',
+      calories: 305,
+      fat: 3.7,
+    },
+    {
+      key: 9,
+      name: 'Gingerbread',
+      calories: 305,
+      fat: 3.7,
+    },
+    {
+      key: 10,
+      name: 'Gingerbread',
+      calories: 305,
+      fat: 3.7,
+    },
     {
       key: 123,
       name: '반원재',
@@ -103,7 +131,7 @@ function RankingScreen() {
                     &#8942;
                   </Text>
                 </View>
-                <DataTable.Row key={i}>
+                <DataTable.Row key={item.key}>
                   <DataTable.Cell>
                     <Text>{i + 1}</Text>
                   </DataTable.Cell>

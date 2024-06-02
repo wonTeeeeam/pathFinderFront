@@ -1,48 +1,95 @@
 import React, {useState} from 'react';
-import {Avatar, Button, Card, Text} from 'react-native-paper';
-import {View, StyleSheet} from 'react-native';
+import {
+  Card,
+  Appbar,
+  Divider,
+  FAB,
+  Text,
+  Avatar,
+  Title,
+  Banner,
+} from 'react-native-paper';
+import {ScrollView, StyleSheet, SafeAreaView, Image} from 'react-native';
+import {LineChartComponent} from '../../components/charts/LineChartComponent';
+import {hs} from '../../utils/scale';
+import padIcon from '../../assets/images/gamepad.png';
+// import LottieView from 'lottie-react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  cardStyle: {
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 30,
+    margin: 15,
+    elevation: 15,
+  },
+  divider: {
+    marginHorizontal: 20,
+    marginTop: -10,
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
+  animationContainer: {
+    width: 30,
+    height: 30,
+  },
+  title: {
+    marginLeft: 20,
+    marginTop: 2,
+  },
+  banner: {},
+  header: {
+    height: hs(40),
   },
 });
 
 function MainScreen() {
   return (
-    <View style={styles.container}>
-      <Card>
-        <Card.Title title="Lorem Ipsum" />
-        <Card.Cover
-          source={{uri: 'https://picsum.photos/700'}}
-          style={{
-            marginLeft: 7,
-            marginRight: 7,
-          }}
-        />
-        <Card.Content>
-          <Text variant="bodyMedium">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </Text>
-        </Card.Content>
-        <Card.Actions>
-          <Button compact={true}>Cancel</Button>
-          <Button compact={true} mode="contained-tonal">
-            Ok
-          </Button>
-        </Card.Actions>
-      </Card>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <Appbar.Header style={styles.header}>
+          <Appbar.Content title="PathFinder" />
+          <Appbar.Action icon="calendar" onPress={() => {}} />
+          <Appbar.Action icon="magnify" onPress={() => {}} />
+        </Appbar.Header>
+
+        <Card style={styles.cardStyle} mode="elevated">
+          <Card.Title title="일주일 치 이동거리" style={styles.title} />
+          <Divider style={styles.divider} />
+          <Card.Content>
+            <LineChartComponent />
+          </Card.Content>
+        </Card>
+
+        <Card style={styles.cardStyle} mode="elevated">
+          <Card.Title title="이번 주 소비한 칼로리" style={styles.title} />
+          <Divider style={styles.divider} />
+          <Card.Content>
+            <LineChartComponent />
+          </Card.Content>
+        </Card>
+
+        <Card style={styles.cardStyle} mode="elevated">
+          <Card.Title title="상위 몇 퍼센트?" style={styles.title} />
+          <Divider style={styles.divider} />
+          <Card.Content>
+            <LineChartComponent />
+          </Card.Content>
+        </Card>
+      </ScrollView>
+      <FAB
+        style={styles.fab}
+        icon={padIcon}
+        onPress={() => console.log('Pressed')}
+      />
+    </SafeAreaView>
   );
 }
 
