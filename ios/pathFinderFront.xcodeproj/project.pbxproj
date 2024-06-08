@@ -113,6 +113,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6FF68D0A2C142D8000317A32 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +130,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				6FF68D0A2C142D8000317A32 /* Fonts */,
 				6F63DD962C030AD4005A837B /* main.jsbundle */,
 				13B07FAE1A68108700A75B9A /* pathFinderFront */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
