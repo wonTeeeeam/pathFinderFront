@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {CommonActions, NavigationContainer} from '@react-navigation/native';
 
-import MainScreen from '../screens/main/Main';
+import MainScreen from '../screens/main/main';
 import RankingScreen from '../screens/ranking/Ranking';
 
 const Tab = createBottomTabNavigator();

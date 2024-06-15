@@ -51,6 +51,10 @@ const styles = StyleSheet.create({
 });
 
 function MainScreen() {
+  const handleStartGame = () => {
+    // Navi
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -87,7 +91,7 @@ function MainScreen() {
       <FAB
         style={styles.fab}
         icon={padIcon}
-        onPress={() => console.log('Pressed')}
+        onPress={() => handleStartGame()}
       />
     </SafeAreaView>
   );
