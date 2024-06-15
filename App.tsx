@@ -12,6 +12,11 @@ import customThemeLight from './src/assets/light.json';
 import LoginStack from './src/navigation/LoginStack';
 import useUserStore from './src/store/user';
 import MainStack from './src/navigation/MainStack';
+import {
+  Camera,
+  CameraDevice,
+  useCameraDevice,
+} from 'react-native-vision-camera';
 
 function App(): React.JSX.Element {
   const colorScheme = useColorScheme();
