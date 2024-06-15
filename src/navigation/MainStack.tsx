@@ -1,106 +1,36 @@
 import * as React from 'react';
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {CommonActions, NavigationContainer} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {BottomNavigation} from 'react-native-paper';
+import {NavigationContainer} from '@react-navigation/native';
+import HomeStack from '../navigation/HomeStack';
 import RankingScreen from '../screens/ranking/Ranking';
-import MainScreen from '../screens/main/main';
-// import {hs} from '../utils/scale';
+import {createMaterialBottomTabNavigator} from 'react-native-paper/react-navigation';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-// const Tab = createBottomTabNavigator();
-const MusicRoute = MainScreen;
-
-const AlbumsRoute = RankingScreen;
+const Tab = createMaterialBottomTabNavigator();
 
 function MainStack(): React.JSX.Element {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    {key: 'music', title: '홈', icon: Icon.getImageSource('home', 20)},
-    {key: 'albums', title: '랭킹', icon: 'crown'},
-  ]);
-
-  const renderScene = BottomNavigation.SceneMap({
-    music: MusicRoute,
-    albums: AlbumsRoute,
-  });
-
   return (
     <NavigationContainer>
-      <BottomNavigation
-        navigationState={{index, routes}}
-        onIndexChange={setIndex}
-        renderScene={renderScene}
-      />
-      {/* <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-        tabBar={({navigation, state, descriptors, insets}) => (
-          <BottomNavigation.Bar
-            style={{
-              maxHeight: hs(63),
-            }}
-            compact={true}
-            navigationState={state}
-            safeAreaInsets={insets}
-            onTabPress={({route, preventDefault}) => {
-              const event = navigation.emit({
-                type: 'tabPress',
-                target: route.key,
-                canPreventDefault: true,
-              });
-
-              if (event.defaultPrevented) {
-                preventDefault();
-              } else {
-                navigation.dispatch({
-                  ...CommonActions.navigate(route.name, route.params),
-                  target: state.key,
-                });
-              }
-            }}
-            renderIcon={({route, focused, color}) => {
-              const {options} = descriptors[route.key];
-              if (options.tabBarIcon) {
-                return options.tabBarIcon({focused, color, size: 24});
-              }
-
-              return null;
-            }}
-            getLabelText={({route}) => {
-              const {options} = descriptors[route.key];
-              const label =
-                options.tabBarLabel !== undefined
-                  ? options.tabBarLabel
-                  : options.title !== undefined
-                  ? options.title
-                  : route?.title;
-
-              return label;
-            }}
-          />
-        )}>
+      <Tab.Navigator>
         <Tab.Screen
           name="Home"
-          component={MainScreen}
+          component={HomeStack}
+          // component={HomeRoute} -> MainStack이 여기 들어가서 그 안에 홈스크린과 게임스크린을 넣어야 함.
           options={{
-            tabBarLabel: '홈',
-            tabBarIcon: ({color, size}) => {
-              return <Icon name="home" size={20} color={color} />;
-            },
+            tabBarIcon: ({color}) => (
+              <MaterialCommunityIcons name="home" color={color} size={26} />
+            ),
           }}
         />
         <Tab.Screen
-          name="Ranking"
+          name="Rank"
           component={RankingScreen}
           options={{
-            tabBarLabel: '랭킹',
-            tabBarIcon: ({color, size}) => {
-              return <Icon name="crown" size={20} color={color} />;
-            },
+            tabBarIcon: ({color}) => (
+              <MaterialCommunityIcons name="crown" color={color} size={26} />
+            ),
           }}
         />
-      </Tab.Navigator> */}
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }

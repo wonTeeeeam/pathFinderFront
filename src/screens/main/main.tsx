@@ -13,7 +13,6 @@ import {ScrollView, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {LineChartComponent} from '../../components/charts/LineChartComponent';
 import {hs} from '../../utils/scale';
 import padIcon from '../../assets/images/gamepad.png';
-// import LottieView from 'lottie-react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,19 +49,19 @@ const styles = StyleSheet.create({
   },
 });
 
-function MainScreen() {
+function MainScreen({navigation}) {
   const handleStartGame = () => {
-    // Navi
+    navigation.navigate('Game');
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Appbar.Header style={styles.header}>
+        {/* <Appbar.Header style={styles.header}>
           <Appbar.Content title="PathFinder" />
           <Appbar.Action icon="calendar" onPress={() => {}} />
           <Appbar.Action icon="magnify" onPress={() => {}} />
-        </Appbar.Header>
+        </Appbar.Header> */}
 
         <Card style={styles.cardStyle} mode="elevated">
           <Card.Title title="일주일 치 이동거리" style={styles.title} />
