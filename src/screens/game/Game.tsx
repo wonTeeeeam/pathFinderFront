@@ -6,6 +6,7 @@ import {
   useCameraDevice,
   useCameraPermission,
 } from 'react-native-vision-camera';
+import PermissionPage from '../permission/Permission';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,12 +14,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function MainStack(): React.JSX.Element {
+export default function MainStack(props): React.JSX.Element {
   const device: CameraDevice = useCameraDevice('back')!;
   const {hasPermission} = useCameraPermission();
-
-  // if (!hasPermission) return <PermissionsPage />
-  // if (device == null) return <NoCameraDeviceError />
+  // if (device === null || !hasPermission) {
+  //   return <PermissionPage />;
+  // }
 
   return <Camera style={styles.container} device={device} isActive={true} />;
 }
